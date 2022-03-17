@@ -4,6 +4,7 @@ from data.users import User
 from data.jobs import Jobs
 from data.forms import RegisterForm, LoginForm, WorksForm
 from flask_login import LoginManager, login_user, logout_user, login_required
+import os
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
@@ -90,8 +91,8 @@ def logout():
 def main():
     name_db = 'mars_explorer.db'
     db_session.global_init(f"db/{name_db}")
-    app.run(port=5003)
-
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
 
 if __name__ == '__main__':
     main()
