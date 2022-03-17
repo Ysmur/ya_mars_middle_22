@@ -21,7 +21,7 @@ def load_user(id):
 def index():
     session = db_session.create_session()
     jobs = session.query(Jobs).all()
-    return render_template("Journal_works.html", jobs=jobs)
+    return render_template("journal_works.html", jobs=jobs)
 
 
 @app.route('/login', methods=['GET', 'POST'])
